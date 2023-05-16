@@ -18,6 +18,9 @@ class StudentOptedCourse extends Model
     // Relation with Course
     public function course()
     {
+        // return $this->belongsToMany(Course::class, 'courses', 'course_id', 'role_id');
         return $this->belongsTo(Course::class, 'course_id', 'id');
     }
+
+
 }

@@ -13,14 +13,14 @@ class CreateStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_students', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
-
             $table->string('name');
             $table->unsignedBigInteger('fk_parent_id');
             $table->char('gender', 1);
-            $table->foreign('fk_parent_id')->references('id')->on('tbl_parents')->onDelete('cascade');
             $table->timestamps();
+
+            $table->foreign('fk_parent_id')->references('id')->on('parents')->onDelete('cascade');
         });
     }
 

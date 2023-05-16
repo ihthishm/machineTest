@@ -13,7 +13,7 @@ class CreateStudentOptedCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_student_opted_courses', function (Blueprint $table) {
+        Schema::create('student_opted_courses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('course_id');
@@ -21,8 +21,8 @@ class CreateStudentOptedCoursesTable extends Migration
             $table->timestamps();
 
             // Define foreign key constraints
-            $table->foreign('student_id')->references('id')->on('tbl_students');
-            $table->foreign('course_id')->references('id')->on('tbl_courses');
+            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('course_id')->references('id')->on('courses');
         });
     }
 

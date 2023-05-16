@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\IndexController@index')->name('index');
-Route::post('/update-status', 'App\Http\Controllers\IndexController@updateStatus')->name('updateStatus');
+Route::get('/',[IndexController::class,'index'])->name('index');
+Route::post('/update-status',[IndexController::class,'updateStatus'])->name('updateStatus');
 
+// Route::post('/update-status', 'App\Http\Controllers\IndexController@updateStatus')->name('updateStatus');

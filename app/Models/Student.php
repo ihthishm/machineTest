@@ -12,7 +12,7 @@ class Student extends Model
     // Relationship with Parent
     public function parent()
     {
-        return $this->belongsTo(Parent::class, 'fk_parent_id', 'id');
+        return $this->belongsTo(Guardian::class, 'fk_parent_id', 'id');
     }
 
     // Relationship with StudentOptedCourse

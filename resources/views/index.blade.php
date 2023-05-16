@@ -2,8 +2,14 @@
 <html>
 <head>
     <title>Student List</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
 <body>
     <div class="container">
@@ -18,17 +24,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($students as $student)
+                @foreach ($optedCourse as $course)
                     <tr>
-                        <td>{{ $student->name }}</td>
-                        <td>{{ $student->parent->name }}</td>
+                        <td>{{ $course->student->name }}</td>
+                        <td>{{ $course->student->parent->name }}</td>
                         <td>
-                            @foreach ($student->optedCourses as $course)
-                                {{ $course->course_name }},
-                            @endforeach
+                                {{ $course->course->course_name}}
                         </td>
                         <td>
-                            <button class="toggle-status btn btn-sm btn-{{ $student->is_active ? 'success' : 'danger' }}" data-student-id="{{ $student->id }}">{{ $student->is_active ? 'Disable' : 'Enable' }}</button>
+                            <button class="toggle-status btn btn-sm btn-{{ $course->is_active ? 'success' : 'danger' }}" data-student-id="{{ $course->id }}">{{ $course->is_active ? 'Disable' : 'Enable' }}</button>
                         </td>
                     </tr>
                 @endforeach
